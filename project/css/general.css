@@ -122,7 +122,7 @@ label {
   border:1px solid lightgray;
   position:absolute;
   top:0px;
-  right:-14px;
+  right:-14px; /* minified - -12px */
 }
 .menu__item_last::after {
   display:none;
@@ -273,6 +273,6 @@ body {
 }
 @media screen and (max-width:720px), screen and (min-width:1920px){
   .menu__item::after {
-    display: none !important;
+    display: none;
   }
 }
