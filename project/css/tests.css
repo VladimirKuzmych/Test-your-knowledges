@@ -103,6 +103,11 @@
 .quiz__timer {
   text-align:right;
 }
+@media screen and (max-width:512px) {
+  .quiz__button_end{
+    float:none;
+  }
+}
 @media screen and (min-width:320px) {
   .tests__item{
     width:94%;
