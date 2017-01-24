@@ -161,7 +161,7 @@ search.onsubmit = function(){
                 '<a href = "#tests/1" class = "tests__all-link" onclick = "router.toPath(\"tests/1\")">' +
                     'Перейти ко всем тестам' +
                 '</a></p></div>';
-        } else window.location.hash = '#tests/' + searchInput.value + "/1";
+        } else window.location.hash = '#tests/' + searchInput.value.replace(/ /g, "/") + "/1";
 
         searchInput.value = "";
         formSubmitPermit = 0;
