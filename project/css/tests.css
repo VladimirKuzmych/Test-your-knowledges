@@ -55,6 +55,7 @@
 }
 .tests__pagination-link {
   display: inline-block;
+  margin:3px 0; /* when minified - 3px 3px */
   border: 2px solid silver;
   background: silver;
 }
