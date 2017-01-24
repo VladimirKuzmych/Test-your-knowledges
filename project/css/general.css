@@ -276,3 +276,9 @@ body {
     display: none;
   }
 }
+@media screen and (max-width:400px) {
+  .search__input {
+    padding:10px 0;
+    width:80px;
+  }
+}
