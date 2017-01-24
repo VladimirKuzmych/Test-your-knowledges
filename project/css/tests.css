@@ -1,0 +1,124 @@
+.tests__selection {
+  text-align:right;
+  padding:20px;
+  font-size:0.7em;
+}
+.selection__filter {
+  margin-left:10px;
+}
+.tests__item { /*real width is defined in media queries */
+  font-size:0.8em;
+  display:inline-block;
+  text-align:center;
+  height:300px;
+  width:30%; /* for ie8 */
+  margin:30px 1%;
+  position:relative;
+  outline:2px solid whitesmoke;
+  box-shadow:0 0 5px 5px silver;
+}
+.test:hover {
+  outline:none;
+}
+.test__header,
+.test__button-container {
+  line-height:60px;
+  height:20%;
+  margin:0;
+  background:lavender;
+}
+.test__link {
+  color:rgb(0,114,198);
+}
+.test__info {
+  height:20%;
+  margin:0;
+}
+.test__image-container {
+  height:40%;
+}
+.test__image {
+  height:100%;
+  max-width:100%;
+}
+.test__button {
+  max-height:100%;
+  border:1px solid gray;
+}
+.test__button:hover {
+  border-color:transparent;
+}
+.tests__pagination {
+  padding:10px;
+  margin:30px auto;
+  background:whitesmoke;
+}
+.tests__pagination-link {
+  display: inline-block;
+  border: 2px solid silver;
+  background: silver;
+}
+.tests__pagination-link_current {
+  background:white;
+}
+.quiz {
+  min-width:200px;
+  width:80%;
+  margin:50px auto;
+  padding:30px;
+  font-size:1.25em;
+  box-shadow:0 0 5px 5px silver;
+  border-radius:20px;
+}
+.quiz__button {
+  margin-top:20px;
+}
+.quiz__button_back {
+  background:turquoise;
+  opacity:0.2;
+  filter: alpha(opacity=20);
+  cursor:default;
+}
+.quiz__button_forward {
+  background:mediumaquamarine;
+}
+.quiz__button_end {
+  float:right;
+}
+.quiz__question,
+.quiz__button_show-stats,
+.quiz__button_to-tests{
+  display:none;
+}
+.quiz__button_to-tests{
+  background:limegreen;
+}
+.quiz__result {
+  font-size:2em;
+}
+.quiz__time {
+  visibility: visible;
+}
+.quiz__timer {
+  text-align:right;
+}
+@media screen and (min-width:320px) {
+  .tests__item{
+    width:94%;
+  }
+}
+@media screen and (min-width:640px) {
+  .tests__item{
+    width:47%;
+  }
+}
+@media screen and (min-width:960px) {
+  .tests__item{
+    width:30%;
+  }
+}
+@media screen and (min-width:1920px) {
+  .tests__item{
+    width:21%;
+  }
+}

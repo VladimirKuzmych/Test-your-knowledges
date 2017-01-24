@@ -1,0 +1,26 @@
+.team {
+    text-align:center;
+    padding:0px 0 30px;
+    max-width:2000px;
+    margin:0 auto;
+}
+.team__item {
+    display:inline-block;
+    margin:30px 10px;
+}
+.team__image {
+    max-width:100%;
+    max-height:100%;
+    vertical-align:bottom;
+    box-shadow:0 0 3px 3px silver;
+}
+.team__image:hover {
+    box-shadow: 3px 3px 3px 3px silver;
+    border:1px solid silver;
+}
+.team__image-wrapper {
+    width:300px;
+    height:300px;
+    vertical-align:center;
+    line-height:300px;
+}

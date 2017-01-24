@@ -1,0 +1,278 @@
+* {
+  box-sizing:border-box;
+}
+ul {
+  padding:0;
+  margin:0;
+}
+li {
+  list-style:none;
+}
+a {
+  color:rgb(94, 100, 105);
+  text-decoration:none;
+}
+a:hover {
+  color:gray;
+}
+body {
+  font-size:12px;
+  color:rgb(94, 100, 105);
+}
+label {
+  cursor:pointer;
+}
+.clearfix:after {
+  display:table;
+  content:"";
+  clear:both;
+}
+.button {
+  cursor:pointer;
+  background:rgb(181, 220, 245);
+  padding:10px;
+  border:2px solid lightgray;
+}
+.loading-gif {
+  display:block;
+  margin:auto;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}
+.form, .switcher {
+  font-size:1.25em;
+  margin:0 auto;
+  width:33%;
+  max-width:500px;
+  min-width:320px;
+  background:white;
+  text-align:center;
+  border:1px solid silver;
+}
+.form {
+  padding:10px 30px;
+  border-top:none;
+}
+.form_registration {
+  display:none;
+}
+.form__input-textarea {
+  resize: none;
+}
+.form__input {
+  width:90%;
+  background:whitesmoke;
+}
+.form__input-subscription {
+  margin:20px 0 10px;
+}
+.form__input-textarea {
+  height:100px;
+}
+.form__button {
+  border-radius:0;
+  margin:25px 0 10px;
+}
+.form__open {
+  width:50%;
+  font-weight:bold;
+  cursor:pointer;
+  padding:10px;
+  float:left;
+}
+.form__open_login{
+  background:turquoise;
+}
+.form__open:hover{
+  color:black;
+  text-decoration:underline;
+  box-shadow:0 0 3px 3px lightgray;
+}
+.menu__sub {
+  background:white;
+  border-radius:10px;
+}
+.menu__item {
+  display:inline-block;
+  margin:20px 10px;
+  border:1px solid silver;
+  font-size:1.2em;
+  position:relative;
+  transition:all .2s;
+}
+.menu__link {
+  display:inline-block;
+  padding:10px;
+}
+.menu__item:hover {
+  background:white;
+  border-radius:10px;
+  border-color:gray;
+}
+.menu__item:hover .menu__link{
+  color:black;
+}
+.menu__item::after{
+  display:inline-block;
+  content:"";
+  height:100%;
+  border:1px solid lightgray;
+  position:absolute;
+  top:0px;
+  right:-14px;
+}
+.menu__item_last::after {
+  display:none;
+}
+.menu__sub {
+  display:none;
+  width:100%;
+  padding-top:5px;
+  border:1px solid silver;
+  font-weight:normal;
+  position:absolute;
+  left:0;
+  top:100%;
+  text-align:left;
+  z-index:300;
+}
+.menu__item_sub {
+  padding-right:10px;
+}
+.menu__item_sub .menu__link {
+  padding-right:0;
+}
+.menu__sub .menu__link:hover {
+  color: gray;
+}
+.menu__item_sub:hover .menu__sub{
+  display:block;
+}
+.menu__select {
+  cursor:pointer;
+}
+.header {
+  border-bottom:1px solid silver;
+  background:whitesmoke;
+  position:relative;
+}
+.header__menu{
+  display:inline-block;
+  text-align:center;
+  clear:both;
+}
+.header__image {
+  float:left;
+}
+.header__toolbar {
+  display:inline-block;
+  position:absolute;
+  top:20px;
+  right:10px;
+  font-size:1.2em;
+}
+.toolbar__login {
+  font-size:1.9em;
+}
+.toolbar__search {
+  display: inline-block;
+}
+.search__input{
+  padding:10px;
+  width:100px;
+}
+.search__button {
+  margin-left:-4px;
+}
+.error {
+  font-size:32px;
+  text-align:center;
+}
+.error__link {
+  color:blue;
+  text-decoration:underline;
+}
+.tests {
+  text-align:center;
+  font-size:2em;
+}
+.tests__query {
+  color:red;
+}
+.tests__all-link {
+  color:blue;
+  text-decoration:underline;
+}
+.footer {
+  text-align:center;
+  background:whitesmoke;
+  border-top:1px solid silver;
+}
+.footer .menu__item {
+  border:none;
+}
+.share {
+  margin:0;
+}
+.share__item {
+  display:inline-block;
+}
+.share__link {
+  display:inline-block;
+  width:32px;
+  height:32px;
+  background:url('../images/sprite.png') no-repeat;
+  cursor:pointer;
+  margin:3px;
+}
+.share__link_facebook {
+  background-position-y:-37px;
+}
+.share__link_twitter {
+  background-position-y:-74px;
+}
+.share__link_mailru {
+  background-position-y:-111px;
+}
+.mainContent {
+  position:relative;
+}
+/*Footer to bottom */
+
+html,
+body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.header {
+    flex: 0 0 auto;
+}
+.mainContent {
+    flex: 1 0 auto;
+}
+.footer {
+    flex: 0 0 auto;
+}
+
+/*Media-queries*/
+
+@media screen and (max-width:1080px){
+  .header__image {
+    float:none;
+  }
+  .header__menu {
+    display:block;
+  }
+}
+@media screen and (max-width:720px), screen and (min-width:1920px){
+  .menu__item::after {
+    display: none !important;
+  }
+}

@@ -1,0 +1,23 @@
+.purpose {
+    margin:50px 0;
+    text-align: center;
+    font-size:1.2em;
+}
+.purpose__for {
+    display:inline-block;
+    width:30%;
+    min-width:230px;
+    margin:0 1%;
+    vertical-align:top;
+}
+.purpose__for-why {
+    text-align:left;
+    line-height:1.5em;
+}
+.purpose__for-this {
+    font-size:1.3em;
+    color:rgb(0,114,198);
+}
+.purpose__for-whom {
+    margin:20px 0 30px;
+}
