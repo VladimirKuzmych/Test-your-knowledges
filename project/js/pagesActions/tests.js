@@ -156,7 +156,7 @@ router.route('tests', function() {
             if(sort) {
                 sort.onchange = function () {
                     //remove sorts from path
-                    var path = window.location.hash.replace(/sorted\w+/, "").replace(/\d+$/, "1");// to first page
+                    var path = window.location.hash.replace(/sorted\w+\//, "").replace(/\d+$/, "1");// to first page
 
                     if (this.selectedIndex == 0) {
                         window.location.hash =  path;
