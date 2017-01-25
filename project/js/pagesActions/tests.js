@@ -1,3 +1,6 @@
+var testsAllData; // global variable that saves all tests's data
+var testsData = {}; // variable that saves all tests's data for current queries(filter, sort, searching)
+
 // TESTS PAGE
 router.route('tests', function() {
 
@@ -58,6 +61,11 @@ router.route('tests', function() {
 
             if (/^\d+$/.test(arrPath[arrPath.length - 1])) paginationPage = arrPath.pop();
 
+            else {
+                router.toPath(window.location.hash.slice(1) + "/1");
+                return;
+            }
+
             if(currentPath.replace(/\d+$/, "") !== previousPath.replace(/\d+$/, "") || currentPath === previousPath) {
                 // rerecord all tests and apply filters and sortings
                 testsData.tests = testsAllData.tests;
@@ -93,27 +101,20 @@ router.route('tests', function() {
             var testsCurrentData = {};
             testsCurrentData.tests = [];
             testsCurrentData.paginationCount = 0;
+            testsCurrentData.currentPage = paginationPage;
 
             if (testsData.tests.length > 12) { // pagination
                 var pagesCount = Math.ceil(testsData.tests.length / 12);
-                if (paginationPage) {
-                    if (paginationPage < pagesCount && paginationPage > 0) {
-                        testsCurrentData.paginationCount = pagesCount;
-                        testsCurrentData.currentPage = paginationPage;
-                        testsCurrentData.tests = testsData.tests.slice((paginationPage - 1) * 12, (paginationPage * 12));
-                    }
-                    else if (paginationPage == pagesCount && paginationPage > 0) {
-                        testsCurrentData.paginationCount = pagesCount;
-                        testsCurrentData.currentPage = paginationPage;
-                        testsCurrentData.tests = testsData.tests.slice((paginationPage - 1) * 12);
-                    }
-                    else {
-                        mainContent.innerHTML = window.Templates.NotFound({});
-                        return;
-                    }
+                if (paginationPage < pagesCount && paginationPage > 0) {
+                    testsCurrentData.paginationCount = pagesCount;
+                    testsCurrentData.tests = testsData.tests.slice((paginationPage - 1) * 12, (paginationPage * 12));
+                }
+                else if (paginationPage == pagesCount && paginationPage > 0) {
+                    testsCurrentData.paginationCount = pagesCount;
+                    testsCurrentData.tests = testsData.tests.slice((paginationPage - 1) * 12);
                 }
                 else {
-                    router.toPath(window.location.hash.slice(1) + "/1");
+                    mainContent.innerHTML = window.Templates.NotFound({});
                     return;
                 }
             }
@@ -122,6 +123,7 @@ router.route('tests', function() {
                     mainContent.innerHTML = window.Templates.NotFound({});
                     return;
                 }
+                else testsCurrentData.tests = testsData.tests.slice();
             }
 
             mainContent.innerHTML = window.Templates.Tests(testsCurrentData);
@@ -410,3 +412,4 @@ router.route('tests', function() {
         }
     }
 });
+
