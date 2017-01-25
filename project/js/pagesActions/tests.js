@@ -242,6 +242,7 @@ router.route('tests', function() {
             var milisecondsLeft = questions.time * 60 * 1000;
             var timerOutput = document.querySelector(".quiz__time");
             var timeSwitcher = document.querySelector(".quiz__time-switcher"); // checkbox
+            var timeIsLeft; // variable that check when time is left in quizEnd()
 
             var quizClock = setInterval(function () { // TIMER
 
@@ -259,6 +260,7 @@ router.route('tests', function() {
                 }
 
                 if (milisecondsLeft <= 0) {
+                    timeIsLeft = true;
                     quizEnd();
                 }
 
@@ -322,9 +324,9 @@ router.route('tests', function() {
             };
 
             function quizEnd() { // count points
-                clearTimeout(quizClock);
-                document.querySelector(".quiz__timer").style.display = "none";
+
                 var result = 0;
+                var uncheckedQuestions = [];
 
                 for (var i = 0; i < questionItems.length; i++) {
 
@@ -333,45 +335,72 @@ router.route('tests', function() {
                     var correctInputsCount = correctInputs.length;
                     var checkedCount = 0;
 
+                    questionItems[i].style.display = "none";
+
                     for (var j = 0; j < inputs.length; j++) {
                         if (inputs[j].checked) checkedCount++;
                     }
+
+                    if(!checkedCount) uncheckedQuestions.push(i + 1); // add unchecked question
+
                     for (var k = 0; k < correctInputsCount; k++) {
+
                         if (correctInputs[k].checked) {
                             if (checkedCount > correctInputsCount) result += 1 / checkedCount;
                             else result += 1 / correctInputsCount; // only Math, nothing else
                         }
+
                     }
+
+                }
+                if(!timeIsLeft){
+                    if(uncheckedQuestions.length) var conf = confirm("Вы не ответили на вопрос №" +
+                        uncheckedQuestions + ". Вернуться к выполнению этих заданий?");
                 }
 
-                result = Math.round(result * 100) / 100; // remove bit's inexactitude
-                var percentage = Math.round(result / questionItems.length * 10000) / 100;
+                if(conf) {
 
-                questionItems[visibleQuestionIndex].style.display = forwardButton.style.display =
-                    backButton.style.display = endButton.style.display = "none";
+                    forwardButton.style.display = backButton.style.display = endButton.style.cssFloat = "none";
 
-                showStatsButton.style.display = toTestsButton.style.display = "inline-block";
-                quizResult.innerHTML = "Ваш результат - " + result + " из " + questionItems.length +
-                    " (" + percentage + "%)";
+                    for (i = 0; i < uncheckedQuestions.length; i++) {
+                        questionItems[uncheckedQuestions[i] - 1].style.display = "block"; // set visible unchecked questions
+                    }
 
-                showStatsButton.onclick = function () {
-                    this.style.display = "none";
-                    for (var i = 0; i < questionItems.length; i++) {
-                        questionItems[i].style.display = "block";
+                }
 
-                        var inputs = questionItems[i].querySelectorAll(".question__input");
-                        var correctInputs = questionItems[i].querySelectorAll(".question__input[data-correct = '1']");
+                else {
 
-                        for (var j = 0; j < inputs.length; j++) {
-                            inputs[j].setAttribute("disabled", "disabled");
-                            inputs[j].parentNode.style.color = "gray";
-                            if (inputs[j].checked) {
-                                inputs[j].parentNode.style.outline = "1px solid red";
-                                inputs[j].parentNode.style.color = "red";
-                            }
-                            if (inputs[j].getAttribute("data-correct") == 1) {
-                                inputs[j].parentNode.style.color = "lime";
-                                if (inputs[j].checked) inputs[j].parentNode.style.outlineColor = "lime";
+                    clearTimeout(quizClock);
+                    document.querySelector(".quiz__timer").style.display = "none";
+
+                    result = Math.round(result * 100) / 100; // remove bit's inexactitude
+                    var percentage = Math.round(result / questionItems.length * 10000) / 100;
+
+                    forwardButton.style.display = backButton.style.display = endButton.style.display = "none";
+
+                    showStatsButton.style.display = toTestsButton.style.display = "inline-block";
+                    quizResult.innerHTML = "Ваш результат - " + result + " из " + questionItems.length +
+                        " (" + percentage + "%)";
+
+                    showStatsButton.onclick = function () {
+                        this.style.display = "none";
+                        for (var i = 0; i < questionItems.length; i++) {
+                            questionItems[i].style.display = "block";
+
+                            var inputs = questionItems[i].querySelectorAll(".question__input");
+                            var correctInputs = questionItems[i].querySelectorAll(".question__input[data-correct = '1']");
+
+                            for (var j = 0; j < inputs.length; j++) {
+                                inputs[j].setAttribute("disabled", "disabled");
+                                inputs[j].parentNode.style.color = "gray";
+                                if (inputs[j].checked) {
+                                    inputs[j].parentNode.style.outline = "1px solid red";
+                                    inputs[j].parentNode.style.color = "red";
+                                }
+                                if (inputs[j].getAttribute("data-correct") == 1) {
+                                    inputs[j].parentNode.style.color = "lime";
+                                    if (inputs[j].checked) inputs[j].parentNode.style.outlineColor = "lime";
+                                }
                             }
                         }
                     }
