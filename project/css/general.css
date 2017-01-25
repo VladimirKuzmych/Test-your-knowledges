@@ -229,13 +229,13 @@ label {
   margin:3px;
 }
 .share__link_facebook {
-  background-position-y:-37px;
+  background-position:0 -37px;
 }
 .share__link_twitter {
-  background-position-y:-74px;
+  background-position:0 -74px;
 }
 .share__link_mailru {
-  background-position-y:-111px;
+  background-position:0 -111px;
 }
 .mainContent {
   position:relative;
