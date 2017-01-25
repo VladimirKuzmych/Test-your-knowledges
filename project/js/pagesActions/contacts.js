@@ -8,37 +8,24 @@ router.route('contacts', function() {
     var form = document.querySelector(".contacts__form");
     var inputs = document.querySelectorAll(".form__input");
 
-    function setContactsButtonClick(){
-        contactsButton.onclick = function(){
-            form.style.transition = "all .5s";
-            if(getComputedStyle(form).getPropertyValue("opacity") == '0' ||
-                getComputedStyle(form).getPropertyValue("filter") == 'alpha(opacity=0)') {
-                form.style.opacity = "1";
-                form.style.filter = "alpha(opacity=100)";
-                form.style.zIndex = "200";
-                form.style.transform = "translateY(0)";
-                form.style.msTransform = "translateY(0)"; // !!! ms - not Ms IE9
-            }
-            else {
-                form.style.opacity = "";
-                form.style.filter = "alpha(opacity=0)";
-                form.style.zIndex = "-1";
-                form.style.transform = "";
-                form.style.msTransform = "";
-            }
-        };
-    }
-
-    if(!document.querySelector("link[href='css/contacts.css']")) {
-
-        var style = document.createElement("link"); // add style to contacts page
-        style.rel = "stylesheet";
-        style.href = "css/contacts.css";
-        head.appendChild(style);
-
-        style.onload = setContactsButtonClick;
-    }
-    else setContactsButtonClick();
+    contactsButton.onclick = function(){
+        form.style.transition = "all .5s";
+        if(getComputedStyle(form).getPropertyValue("opacity") == '0' ||
+            getComputedStyle(form).getPropertyValue("filter") == 'alpha(opacity=0)') {
+            form.style.opacity = "1";
+            form.style.filter = "alpha(opacity=100)";
+            form.style.zIndex = "200";
+            form.style.transform = "translateY(0)";
+            form.style.msTransform = "translateY(0)"; // !!! ms - not Ms IE9
+        }
+        else {
+            form.style.opacity = "";
+            form.style.filter = "alpha(opacity=0)";
+            form.style.zIndex = "-1";
+            form.style.transform = "";
+            form.style.msTransform = "";
+        }
+    };
 
     form.onsubmit = function(){
         for(var i = 0; i < inputs.length; i++){
