@@ -2,15 +2,6 @@ router.route('team', function() {
 
     setHeaderLinkColor(3);
 
-    if(!document.querySelector("link[href='css/team.css']")) {
-
-        var style = document.createElement("link"); // add style to main page
-        style.rel = "stylesheet";
-        style.href = "css/team.css";
-        head.appendChild(style);
-
-    }
-
     var team = {
         people: ["Олег Евдокимов", "Павел Сорокин", "Ирина Наумова", "Фаина Ситникова",
             "Алёна Воронцова", "Гавриил Иванов","Денис Евсеев", "Инна Шубина",
