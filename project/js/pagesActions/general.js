@@ -39,9 +39,6 @@ function setHeaderLinkColor(index){ // show what page is active
 
 var head = document.querySelector("head");
 
-var testsAllData; // global variable that saves all tests's data
-var testsData = {}; // variable that saves all tests's data for current queries(filter, sort, searching)
-
 var mainContent = document.querySelector('.mainContent');
 var router = new window.Router();
 
@@ -51,98 +48,136 @@ router.notFound(function() {
 
 router.route('', function() {
 
-    if(!document.querySelector("script[src='js/pagesActions/home.js']")){
+    if(!document.querySelector("link[href='css/main.css']")){
 
-        var script = document.createElement("script"); // add style to tests page
-        script.src = "js/pagesActions/home.js";
-        document.body.appendChild(script);
+        mainContent.innerHTML = '<img class = "loading-gif" src = "images/default.gif" alt = "logo">';
 
-        script.onreadystatechange = script.onload = function(){
-            router.toPath("");
+        var style = document.createElement("link"); // add style to main page
+        style.rel = "stylesheet";
+        style.href = "css/main.css";
+        head.appendChild(style);
+
+        style.onload = function(){
+
+            var script = document.createElement("script"); // add script to main page
+            script.src = "js/pagesActions/home.js";
+            document.body.appendChild(script);
+
+            script.onreadystatechange = script.onload = function () {
+                router.toPath("");
+            }
         }
-
     }
-
 });
 
 router.route('tests', function() {
 
-    if(!document.querySelector("script[src='js/pagesActions/tests.js']")){
+    if(!document.querySelector("link[href='css/tests.css']")){
 
-        var script = document.createElement("script"); // add style to tests page
-        script.src = "js/pagesActions/tests.js";
-        document.body.appendChild(script);
+        mainContent.innerHTML = '<img class = "loading-gif" src = "images/default.gif" alt = "logo">';
 
-        script.onreadystatechange = script.onload = function(){
-            router.toPath(currentPath.slice(1));
+        var style = document.createElement("link"); // add style to tests page
+        style.rel = "stylesheet";
+        style.href = "css/tests.css";
+        head.appendChild(style);
+
+        style.onload = function(){
+
+            var script = document.createElement("script"); // add script to tests page
+            script.src = "js/pagesActions/tests.js";
+            document.body.appendChild(script);
+            script.onreadystatechange = script.onload = function(){
+                router.toPath(currentPath.slice(1));
+            }
         }
-
     }
-
 });
 
 router.route('info', function() {
 
-    if(!document.querySelector("script[src='js/pagesActions/info.js']")){
+    if(!document.querySelector("link[href='css/info.css']")) {
 
-        var script = document.createElement("script"); // add style to tests page
-        script.src = "js/pagesActions/info.js";
-        document.body.appendChild(script);
+        mainContent.innerHTML = '<img class = "loading-gif" src = "images/default.gif" alt = "logo">';
 
-        script.onreadystatechange = script.onload = function(){
-            router.toPath("info");
+        var style = document.createElement("link"); // add style to info page
+        style.rel = "stylesheet";
+        style.href = "css/info.css";
+        head.appendChild(style);
+
+        style.onload = function(){
+
+            var script = document.createElement("script"); // add style to info page
+            script.src = "js/pagesActions/info.js";
+            document.body.appendChild(script);
+
+            script.onreadystatechange = script.onload = function(){
+                router.toPath("info");
+            }
         }
-
     }
-
 });
 
 router.route('team', function() {
 
-    if(!document.querySelector("script[src='js/pagesActions/team.js']")){
+    if(!document.querySelector("link[href='css/team.css']")) {
 
-        var script = document.createElement("script"); // add style to tests page
-        script.src = "js/pagesActions/team.js";
-        document.body.appendChild(script);
+        mainContent.innerHTML = '<img class = "loading-gif" src = "images/default.gif" alt = "logo">';
 
-        script.onreadystatechange = script.onload = function(){
-            router.toPath("team");
+        var style = document.createElement("link"); // add style to team page
+        style.rel = "stylesheet";
+        style.href = "css/team.css";
+        head.appendChild(style);
+
+        style.onload = function(){
+            var script = document.createElement("script"); // add script to team page
+            script.src = "js/pagesActions/team.js";
+            document.body.appendChild(script);
+
+            script.onreadystatechange = script.onload = function(){
+                router.toPath("team");
+            }
         }
-
     }
-
 });
 
 router.route('contacts', function() {
 
-    if(!document.querySelector("script[src='js/pagesActions/contacts.js']")){
+    if(!document.querySelector("link[href='css/contacts.css']")) {
 
-        var script = document.createElement("script"); // add style to tests page
-        script.src = "js/pagesActions/contacts.js";
-        document.body.appendChild(script);
+        mainContent.innerHTML = '<img class = "loading-gif" src = "images/default.gif" alt = "logo">';
 
-        script.onreadystatechange = script.onload = function(){
-            router.toPath("contacts");
+        var style = document.createElement("link"); // add style to contacts page
+        style.rel = "stylesheet";
+        style.href = "css/contacts.css";
+        head.appendChild(style);
+
+        style.onload = function(){
+
+            var script = document.createElement("script"); // add script to contacts page
+            script.src = "js/pagesActions/contacts.js";
+            document.body.appendChild(script);
+
+            script.onreadystatechange = script.onload = function(){
+                router.toPath("contacts");
+            }
         }
-
     }
-
 });
 
 router.route('login', function() {
 
     if(!document.querySelector("script[src='js/pagesActions/login.js']")){
 
-        var script = document.createElement("script"); // add style to tests page
+        mainContent.innerHTML = '<img class = "loading-gif" src = "images/default.gif" alt = "logo">';
+
+        var script = document.createElement("script"); // add style to login page
         script.src = "js/pagesActions/login.js";
         document.body.appendChild(script);
 
         script.onreadystatechange = script.onload = function(){
             router.toPath("login");
         }
-
     }
-
 });
 
 var searchInput = document.querySelector(".search__input");
