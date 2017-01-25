@@ -3,15 +3,6 @@ router.route('info', function() {
 
     setHeaderLinkColor(2);
 
-    if(!document.querySelector("link[href='css/info.css']")) {
-
-        var style = document.createElement("link"); // add style to main page
-        style.rel = "stylesheet";
-        style.href = "css/info.css";
-        head.appendChild(style);
-
-    }
-
     var info = {
         headers:['Молодым специалистам', 'IT компаниям', 'ВУЗам'],
         paragraphs:['Выпускникам ВУЗов, которые хотят заниматься разработкой ПО в IT компаниях и соответствовать высоким профессиональным требованиям этих компаний.',
