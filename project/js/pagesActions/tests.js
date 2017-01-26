@@ -6,15 +6,6 @@ router.route('tests', function() {
 
     setHeaderLinkColor(1);
 
-    if(!document.querySelector("link[href='css/tests.css']")){
-
-        var style = document.createElement("link"); // add style to tests page
-        style.rel = "stylesheet";
-        style.href = "css/tests.css";
-        head.appendChild(style);
-
-    }
-
     var startTest = false;
 
     var arrPath = window.location.hash.slice(1).split("/");
