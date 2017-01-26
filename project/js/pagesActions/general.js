@@ -81,14 +81,12 @@ router.route('tests', function() {
         style.href = "css/tests.css";
         head.appendChild(style);
 
-        style.onload = function(){
+        var script = document.createElement("script"); // add script to tests page
+        script.src = "js/pagesActions/tests.js";
+        document.body.appendChild(script);
 
-            var script = document.createElement("script"); // add script to tests page
-            script.src = "js/pagesActions/tests.js";
-            document.body.appendChild(script);
-            script.onreadystatechange = script.onload = function(){
-                router.toPath(currentPath.slice(1));
-            }
+        script.onreadystatechange = script.onload = function(){
+            router.toPath(currentPath.slice(1));
         }
     }
 });
@@ -104,15 +102,12 @@ router.route('info', function() {
         style.href = "css/info.css";
         head.appendChild(style);
 
-        style.onload = function(){
+        var script = document.createElement("script"); // add style to info page
+        script.src = "js/pagesActions/info.js";
+        document.body.appendChild(script);
 
-            var script = document.createElement("script"); // add style to info page
-            script.src = "js/pagesActions/info.js";
-            document.body.appendChild(script);
-
-            script.onreadystatechange = script.onload = function(){
-                router.toPath("info");
-            }
+        script.onreadystatechange = script.onload = function(){
+            router.toPath("info");
         }
     }
 });
@@ -128,14 +123,12 @@ router.route('team', function() {
         style.href = "css/team.css";
         head.appendChild(style);
 
-        style.onload = function(){
-            var script = document.createElement("script"); // add script to team page
-            script.src = "js/pagesActions/team.js";
-            document.body.appendChild(script);
+        var script = document.createElement("script"); // add script to team page
+        script.src = "js/pagesActions/team.js";
+        document.body.appendChild(script);
 
-            script.onreadystatechange = script.onload = function(){
-                router.toPath("team");
-            }
+        script.onreadystatechange = script.onload = function(){
+            router.toPath("team");
         }
     }
 });
@@ -151,15 +144,13 @@ router.route('contacts', function() {
         style.href = "css/contacts.css";
         head.appendChild(style);
 
-        style.onload = function(){
 
-            var script = document.createElement("script"); // add script to contacts page
-            script.src = "js/pagesActions/contacts.js";
-            document.body.appendChild(script);
+        var script = document.createElement("script"); // add script to contacts page
+        script.src = "js/pagesActions/contacts.js";
+        document.body.appendChild(script);
 
-            script.onreadystatechange = script.onload = function(){
-                router.toPath("contacts");
-            }
+        script.onreadystatechange = script.onload = function(){
+            router.toPath("contacts");
         }
     }
 });
