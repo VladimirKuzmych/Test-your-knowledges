@@ -126,7 +126,7 @@ router.route('tests', function() {
                 filter.onchange = function () {
                     var path = window.location.hash.replace("basic/", "").replace("intermediate/", "").replace("hard/", "").replace(/\d+$/, "1");;
 
-                    var indexToPaste = 7; // if sort - change index
+                    var indexToPaste = 7; // if sort - change index; 7 - "#tests/".length
                     if (sortedAlph) indexToPaste += 'sortedAlph/'.length;
                     else if (sortedReverseAlph) indexToPaste += 'sortedReverseAlph/'.length;
                     else if (sortedSmallToBig || sortedBigToSmall) indexToPaste += 'sortedSmallToBig/'.length;
