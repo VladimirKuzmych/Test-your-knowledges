@@ -61,10 +61,10 @@ router.route('tests', function() {
                 // rerecord all tests and apply filters and sortings
                 testsData.tests = testsAllData.tests;
 
-                if (arrPath[1] === "sortedAlph") sortedAlph = arrPath.splice(1, 1); // delete "sortedAlph" from path
-                else if (arrPath[1] === "sortedReverseAlph") sortedReverseAlph = arrPath.splice(1, 1);// delete "sortedReverseAlph" from path
-                else if (arrPath[1] === "sortedSmallToBig") sortedSmallToBig = arrPath.splice(1, 1); // delete "sortedSmallToBig" from path
-                else if (arrPath[1] === "sortedBigToSmall") sortedBigToSmall = arrPath.splice(1, 1);// delete "sortedBigToSmall" from path
+                if (arrPath[1] == "sortedAlph") sortedAlph = arrPath.splice(1, 1); // delete "sortedAlph" from path
+                else if (arrPath[1] == "sortedReverseAlph") sortedReverseAlph = arrPath.splice(1, 1);// delete "sortedReverseAlph" from path
+                else if (arrPath[1] == "sortedSmallToBig") sortedSmallToBig = arrPath.splice(1, 1); // delete "sortedSmallToBig" from path
+                else if (arrPath[1] == "sortedBigToSmall") sortedBigToSmall = arrPath.splice(1, 1);// delete "sortedBigToSmall" from path
 
                 for (var i = 1; i < arrPath.length; i++) {
                     testsData.tests = testsData.tests.filter(function (test) {
