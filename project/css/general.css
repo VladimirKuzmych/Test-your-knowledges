@@ -176,6 +176,8 @@ label {
 }
 .toolbar__login {
   font-size:1.9em;
+  position:relative;
+  top:5px;
 }
 .toolbar__search {
   display: inline-block;
